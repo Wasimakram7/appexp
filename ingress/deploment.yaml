@@ -1,0 +1,55 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: A-deploy
+spec:
+  minReadySeconds: 5
+  replicas: 3
+  selector:
+    matchLabels:
+      app: A
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+  template:
+    metadata:
+      name: A-pod
+      labels:
+        app: A
+        version: "1.0.0"
+    spec:
+      containers:
+        - name: A
+          image: wasim78/apps:1.0.0
+          ports:
+            - containerPort: 80
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: B-deploy
+spec:
+  minReadySeconds: 5
+  replicas: 3
+  selector:
+    matchLabels:
+      app: B
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+  template:
+    metadata:
+      name: B-pod
+      labels:
+        app: B
+        version: "1.0.0"
+    spec:
+      containers:
+        - name: B
+          image: wasim78/apps:1.0.0
+          ports:
+            - containerPort: 80

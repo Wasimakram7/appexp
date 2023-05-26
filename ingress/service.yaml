@@ -1,0 +1,22 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: A-svc
+spec:
+  selector:
+    app: A
+  ports:
+    - protocol: TCP
+      port: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: B-svc
+spec:
+  selector:
+    app: B
+  ports:
+    - protocol: TCP
+      port: 80
