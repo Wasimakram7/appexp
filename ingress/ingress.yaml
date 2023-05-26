@@ -15,14 +15,14 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: A-svc
+                name: a-svc
                 port:
                   number: 80
           - path: /identity(/|$)(.*)
             pathType: Prefix
             backend:
               service:
-                name: B-svc
+                name: a-svc
                 port:
                   number: 80        
                   
